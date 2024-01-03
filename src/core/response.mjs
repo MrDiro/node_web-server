@@ -13,6 +13,7 @@ export class Response extends ServerResponse {
   /**
    * envía respuesta al cliente
    * @param { any } data
+   * @param { number } statuscode
    */
   send (data = null, statuscode = 200) {
 

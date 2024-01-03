@@ -1,7 +1,7 @@
 'use strict';
 import { argv } from 'node:process';
 import { parseArgs } from 'node:util';
-import { Application } from './core/application.mjs';
+import { Soaring } from './core/soaring.mjs';
 import './core/colors.mjs';
 
 (
@@ -10,6 +10,7 @@ import './core/colors.mjs';
    * @param { string[] } args
    */
   function main (args) {
+
     try {
 
       console.clear();
@@ -21,12 +22,21 @@ import './core/colors.mjs';
             type: 'string',
             short: 'p',
             default: '3000'
+          },
+          https: {
+            type: 'boolean',
+            short: 'p',
+            default: false
           }
         }
       });
 
-      const app = new Application(values.port);
-      app.start();
+      const app = new Soaring({ port: values.port, https: values.https });
+
+      app.start(() => {
+
+        console.log('Server is running');
+      });
     }
     catch (err) {
 

@@ -40,7 +40,7 @@
   "nodemonConfig": {
     "verbose": false,
     "ignore": ["node_modules/", "public/"],
-    "delay": 2500,
+    "delay": 0,
     "watch": ["src/"],
     "ext": "*.mjs, *.js"
   },

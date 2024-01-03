@@ -4,35 +4,24 @@ import { URL } from 'node:url';
 
 export class Request extends IncomingMessage {
 
-  url;
-
   constructor (socket) {
 
     super(socket);
-    this.url = '';
   }
 
-  /**
-   * @param { string } value
-   */
-  set url (value) {
+  get URL () {
 
-    this.url = value;
-  }
-
-  get url () {
-
-    const url = new URL(super.url, `http://${this.headers.host}`);
+    const _url = new URL(this.url, `http://${this.headers.host}`);
 
     return {
-      href: url.href,
-      origin: url.origin,
-      host: url.host,
-      hostname: url.hostname,
-      path: url.pathname,
-      protocol: url.protocol,
-      port: url.port,
-      query: url.searchParams,
+      href: _url.href,
+      origin: _url.origin,
+      host: _url.host,
+      hostname: _url.hostname,
+      path: _url.pathname,
+      protocol: _url.protocol,
+      port: _url.port,
+      query: _url.searchParams,
       method: this.method
     };
   }
